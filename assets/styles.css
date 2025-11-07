@@ -1,0 +1,180 @@
+:root {
+  --anim-duration: .8s;
+  --anim-delay: .12s;
+  --easing: cubic-bezier(.25,.1,.25,1);
+}
+
+.brand-type { font-family: "Playfair Display", ui-serif, Georgia, serif; }
+
+/* ================= Animations ================= */
+@keyframes scaleIn {
+  0% { transform: scale(.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.will-scale-in { opacity: 0; transform: scale(.95); }
+.animate-scale-in { animation: scaleIn .9s var(--easing) both; }
+
+[data-pop] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity var(--anim-duration) var(--easing),
+    transform var(--anim-duration) var(--easing);
+}
+.pop-in { opacity: 1 !important; transform: translateY(0) !important; }
+
+/* ================= Media helpers ================= */
+.media-cover {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 50%;
+}
+
+.sf-img {
+  will-change: transform;
+  transform: translateY(12px) scale(1.02);
+  transition: transform .2s ease-out;
+}
+
+/* ================= Reduced motion ================= */
+@media (prefers-reduced-motion: reduce){
+  .will-scale-in, .animate-scale-in, [data-pop], .sf-img{
+    animation: none !important; transform: none !important; opacity: 1 !important;
+  }
+}
+
+/* ================= Press Marquee ================= */
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+#press-marquee .marquee {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+#press-marquee .marquee-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: clamp(30px, 3vw, 50px);
+  animation: marqueeScroll 25s linear infinite;
+}
+
+#press-marquee .marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Smaller logo size */
+#press-marquee .marquee-item img {
+  height: clamp(28px, 3vw, 42px);
+  object-fit: contain;
+  filter: grayscale(100%) contrast(1.05) brightness(0.9);
+  transition: all .3s ease;
+  opacity: 0.9;
+}
+#press-marquee .marquee-item:hover img {
+  transform: translateY(-2px) scale(1.05);
+  filter: grayscale(0%) brightness(1);
+  opacity: 1;
+}
+:root {
+  --anim-duration: .8s;
+  --anim-delay: .12s;
+  --easing: cubic-bezier(.25,.1,.25,1);
+}
+
+/* Brand serif */
+.brand-type { font-family: "Playfair Display", ui-serif, Georgia, serif; }
+
+/* ===== In-view pop / hero scale-in (shared) ===== */
+@keyframes scaleIn {
+  0% { transform: scale(.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.will-scale-in { opacity: 0; transform: scale(.95); }
+.animate-scale-in { animation: scaleIn .9s var(--easing) both; }
+
+[data-pop] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity var(--anim-duration) var(--easing),
+    transform var(--anim-duration) var(--easing);
+}
+.pop-in { opacity: 1 !important; transform: translateY(0) !important; }
+
+/* ===== Optional media helper if needed elsewhere ===== */
+.media-cover {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 50%;
+}
+
+/* ===== Popup (overlay) ===== */
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  display: none;                 /* hidden by default */
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+  backdrop-filter: blur(2px);
+}
+.popup.show {                    /* toggled by JS */
+  display: flex;
+  animation: fadeIn .2s ease-out both;
+}
+.popup-content {
+  width: 100%;
+  max-width: 560px;
+  background: #fff;
+  color: #111827;                /* neutral-900 */
+  border: 1px solid #e5e7eb;     /* neutral-200 */
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.18);
+  transform: translateY(8px) scale(.98);
+  opacity: 0;
+  animation: popIn .28s var(--easing) .08s both;
+  text-align: center;
+}
+.popup-content button {
+  margin-top: 16px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: 1px solid #c9b27d;
+  color: #c9b27d;
+  background: transparent;
+  cursor: pointer;
+  transition: background .25s ease, color .25s ease;
+  font-family: "Playfair Display", ui-serif, Georgia, serif;
+}
+.popup-content button:hover {
+  background: #c9b27d;
+  color: #fff;
+}
+
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+@keyframes popIn {
+  0% { transform: translateY(8px) scale(.98); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Prevent body scroll when popup open */
+.body--locked { overflow: hidden; }
+
+/* ===== Reduced motion ===== */
+@media (prefers-reduced-motion: reduce){
+  .will-scale-in, .animate-scale-in, [data-pop]{
+    animation:none !important; transform:none !important; opacity:1 !important;
+  }
+  .popup.show { animation: none; }
+  .popup-content { animation: none; opacity: 1; transform: none; }
+}
