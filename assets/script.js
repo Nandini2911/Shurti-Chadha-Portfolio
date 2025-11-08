@@ -1,4 +1,4 @@
-// Hero copy animation
+// ================== Hero copy animation ==================
 const hero = document.getElementById('heroCopy');
 const ioHero = new IntersectionObserver((entries) => {
   entries.forEach(e => {
@@ -11,7 +11,7 @@ const ioHero = new IntersectionObserver((entries) => {
 
 if (hero) ioHero.observe(hero);
 
-// Pop-in observer for elements with [data-pop]
+// ================== In-view pop-ins (single observer) ==================
 const ioPop = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
@@ -23,23 +23,8 @@ const ioPop = new IntersectionObserver((entries)=>{
 }, {threshold:0.15});
 
 document.querySelectorAll('[data-pop]').forEach(el=> ioPop.observe(el));
-/* ========= In-view animations ========= */
-(function () {
-  // Pop-in observer for elements with [data-pop]
-  const ioPop = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        const delay = +e.target.getAttribute('data-pop-delay') || 0;
-        setTimeout(()=> e.target.classList.add('pop-in'), delay);
-        ioPop.unobserve(e.target);
-      }
-    });
-  }, {threshold:0.15});
 
-  document.querySelectorAll('[data-pop]').forEach(el=> ioPop.observe(el));
-})();
-
-/* ========= Contact form popup logic ========= */
+/* ========= Contact form popup logic (safe if elements absent) ========= */
 (function () {
   const form = document.getElementById('enquiryForm');
   const sendBtn = document.getElementById('sendBtn');
@@ -51,7 +36,6 @@ document.querySelectorAll('[data-pop]').forEach(el=> ioPop.observe(el));
     popup.classList.add('show');
     popup.setAttribute('aria-hidden', 'false');
     document.body.classList.add('body--locked');
-    // focus the close button for accessibility
     const btn = popup.querySelector('button');
     if (btn) btn.focus();
   }
@@ -61,7 +45,6 @@ document.querySelectorAll('[data-pop]').forEach(el=> ioPop.observe(el));
     popup.classList.remove('show');
     popup.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('body--locked');
-    // return focus to send button
     if (sendBtn) sendBtn.focus();
   }
   // expose for inline onclick fallback
@@ -76,8 +59,7 @@ document.querySelectorAll('[data-pop]').forEach(el=> ioPop.observe(el));
       return;
     }
 
-    // If you later wire a backend, submit here via fetch().
-    // For now, just show confirmation popup.
+    // TODO: wire to backend via fetch() if needed.
     openPopup();
   }
 
@@ -96,3 +78,44 @@ document.querySelectorAll('[data-pop]').forEach(el=> ioPop.observe(el));
     if (e.key === 'Escape') closePopup();
   });
 })();
+
+/* ========= Mailto rescue: force open + copy fallback ========= */
+document.addEventListener('click', async (e) => {
+  const a = e.target.closest('a[href^="mailto:"]');
+  if (!a) return;
+
+  // Ensure no ancestor overlay swallows the event
+  e.stopPropagation();
+
+  // Attempt to open the default mail handler
+  try {
+    window.location.href = a.href;
+  } catch (_) {}
+
+  // Fallback: copy email to clipboard so user can paste if no handler is set
+  try {
+    const addr = a.getAttribute('href').replace(/^mailto:/, '');
+    await navigator.clipboard.writeText(addr);
+    // Optional: show a toast or console info
+    // console.info('Email copied:', addr);
+  } catch (_) { /* ignore */ }
+});
+// Hard-open mail client and copy as fallback
+function openMail(addr) {
+  try {
+    // Force navigation to mailto (works even if listeners stopped default)
+    window.location.assign(`mailto:${addr}`);
+  } catch (_) { /* ignore */ }
+
+  // Fallback: copy to clipboard so user can paste if no handler is set
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(addr).catch(() => {});
+  }
+  // Always return true so browsers that do handle mailto still proceed
+  return true;
+}
+
+// Diagnose if some overlay is blocking clicks (temporary; remove after test)
+document.getElementById('mailtoWork')?.addEventListener('click', () => {
+  console.log('mailto clicked');
+});
