@@ -424,3 +424,21 @@ body, p, h1, h2, h3, h4, h5, h6 {
         pointer-events: auto;
       }
     }
+ .ea-wordmark {
+    font-family: "Playfair Display", serif; /* ✅ same font as menu */
+    font-weight: 500;                       /* ✅ matches HOME/ABOUT font-weight */
+    text-transform: uppercase;
+    color: var(--gold);
+    font-size: 42px;                        /* medium, balanced size */
+    letter-spacing: 0.08em;                 /* same letter spacing */
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    background: var(--bg);
+    transition: color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .ea-wordmark:hover {
+    color: var(--gold);
+    box-shadow: inset 0 -3px 0 var(--gold); /* subtle hover underline like menu */
+  }
