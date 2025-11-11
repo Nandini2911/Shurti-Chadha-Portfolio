@@ -18,30 +18,30 @@
 <body class="bg-neutral-950 text-white antialiased">
 
   <!-- ====================== HERO ====================== -->
-<header class="relative w-full min-h-screen overflow-hidden">
+  <header class="relative w-full min-h-screen overflow-hidden">
+  <!-- Background Video -->
   <video
     id="heroVideo"
     class="absolute inset-0 w-full h-full object-cover"
     autoplay
+    muted
     loop
     playsinline
     preload="metadata"
-    
+   
   >
     <source src="https://cdn.shopify.com/videos/c/o/v/4ce3641019bc415593c29933aa303659.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
   </video>
 
+  <!-- Optional dark overlay for text clarity -->
   <div class="absolute inset-0 bg-black/30"></div>
 
+  <!-- Centered Hero Copy -->
   <div class="relative z-10 flex min-h-screen items-center justify-center text-center px-6">
-    <div class="will-scale-in brand-type" id="heroCopy">
-      
-    </div>
+    <div class="will-scale-in brand-type" id="heroCopy"></div>
   </div>
 </header>
-
-
-
 
 
 

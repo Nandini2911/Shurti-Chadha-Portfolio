@@ -121,16 +121,54 @@ document.getElementById('mailtoWork')?.addEventListener('click', () => {
 });
 
 
+ 
+  (function () {
+    const video = document.getElementById('heroVideo');
 
-  const video = document.getElementById('heroVideo');
-  const enableSound = () => {
-    video.muted = false;
-    video.play().catch(() => {});
-    document.removeEventListener('click', enableSound);
-    document.removeEventListener('scroll', enableSound);
-  };
-  document.addEventListener('click', enableSound);
-  document.addEventListener('scroll', enableSound);
+    // Auto-unmute after the first user gesture (required by browsers)
+    const tryEnableSound = () => {
+      // start with a very low volume and ramp up
+      video.muted = false;
+      video.volume = 0.0;
+      const fadeTo = 0.5;   // target volume (0.0 - 1.0)
+      const steps = 10;     // fade steps
+      const ms = 600;       // fade duration
+
+      const ok = video.play();
+      if (ok && ok.catch) ok.catch(() => {}); // ignore if already playing
+
+      let i = 0;
+      const tick = setInterval(() => {
+        i++;
+        video.volume = Math.min(fadeTo, (fadeTo / steps) * i);
+        if (i >= steps) clearInterval(tick);
+      }, ms / steps);
+
+      // remove listeners so it only runs once
+      window.removeEventListener('click', tryEnableSound);
+      window.removeEventListener('touchstart', tryEnableSound, {passive:true});
+      window.removeEventListener('scroll', tryEnableSound);
+      window.removeEventListener('keydown', tryEnableSound);
+    };
+
+    // Listen for any reasonable gesture
+    window.addEventListener('click', tryEnableSound);
+    window.addEventListener('touchstart', tryEnableSound, {passive:true});
+    window.addEventListener('scroll', tryEnableSound);
+    window.addEventListener('keydown', tryEnableSound);
+
+    // Helpful: warn if the video has no audio track
+    video.addEventListener('loadedmetadata', () => {
+      const hasAudio =
+        (typeof video.mozHasAudio !== 'undefined' && video.mozHasAudio) ||
+        (typeof video.webkitAudioDecodedByteCount !== 'undefined' && video.webkitAudioDecodedByteCount > 0) ||
+        (video.audioTracks && video.audioTracks.length > 0);
+      if (!hasAudio) {
+        console.warn('This MP4 may not contain an audio track. If you still hear nothing after a click/scroll, re-export with audio.');
+      }
+    });
+  })();
+
 
 
 
