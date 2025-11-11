@@ -18,16 +18,33 @@
 <body class="bg-neutral-950 text-white antialiased">
 
   <!-- ====================== HERO ====================== -->
-  <header class="relative w-full min-h-screen">
-    <img
-      class="media-cover"
-      src="https://images.squarespace-cdn.com/content/v1/6667224025cf36142e87a84e/9d2c225a-a4f6-42cb-a6af-a58c342975fa/Modern+interior+design+by+Hipcouch.jpg"
-      alt="Hero background" />
+<header class="relative w-full min-h-screen overflow-hidden">
+  <video
+    id="heroVideo"
+    class="absolute inset-0 w-full h-full object-cover"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    poster="https://images.squarespace-cdn.com/content/v1/6667224025cf36142e87a84e/9d2c225a-a4f6-42cb-a6af-a58c342975fa/Modern+interior+design+by+Hipcouch.jpg"
+  >
+    <source src="https://cdn.shopify.com/videos/c/o/v/4ce3641019bc415593c29933aa303659.mp4" type="video/mp4" />
+  </video>
 
-    <div class="relative z-10 flex min-h-screen items-center justify-center text-center px-6">
-      <div class="will-scale-in brand-type" id="heroCopy"></div>
+  <div class="absolute inset-0 bg-black/30"></div>
+
+  <div class="relative z-10 flex min-h-screen items-center justify-center text-center px-6">
+    <div class="will-scale-in brand-type" id="heroCopy">
+      
     </div>
-  </header>
+  </div>
+</header>
+
+
+
+
+
 
   <!-- ================== ABOUT SECTION ================== -->
   <section id="about-essajees" class="bg-white text-neutral-900 py-16 md:py-24">

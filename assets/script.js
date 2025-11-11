@@ -119,3 +119,18 @@ function openMail(addr) {
 document.getElementById('mailtoWork')?.addEventListener('click', () => {
   console.log('mailto clicked');
 });
+
+
+
+  const video = document.getElementById('heroVideo');
+  const enableSound = () => {
+    video.muted = false;
+    video.play().catch(() => {});
+    document.removeEventListener('click', enableSound);
+    document.removeEventListener('scroll', enableSound);
+  };
+  document.addEventListener('click', enableSound);
+  document.addEventListener('scroll', enableSound);
+
+
+
