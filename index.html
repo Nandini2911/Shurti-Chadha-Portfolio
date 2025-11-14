@@ -37,159 +37,274 @@
   
 
   
-<!-- ========= SHRUTI CHADHA HEADER (No Top Border) ========= -->
-  <header class="ea-header">
-    <div class="ea-nav">
-      <!-- Left Menu -->
-      <nav class="ea-left">
-        <ul>
-          <li><a href="/">HOME</a></li>
-          <li><a href="#about-essajees">ABOUT</a></li>
-        </ul>
-      </nav>
+<!-- ========= SHRUTI CHADHA HEADER (Desktop + Mobile) ========= -->
+<header class="ea-header">
+  <div class="ea-nav">
+    <!-- Mobile hamburger (left) -->
+    <button class="ea-burger" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+    </button>
 
-      <!-- Center Text Logo -->
-      <div class="ea-logo">
-        <a href="/" class="ea-wordmark" aria-label="Shruti Chadha">SHRUTI&nbsp;CHADHA</a>
-      </div>
+    <!-- Left Menu (Desktop only) -->
+    <nav class="ea-left">
+      <ul>
+        <li><a href="/">HOME</a></li>
+        <li><a href="#about-essajees">ABOUT</a></li>
+      </ul>
+    </nav>
 
-      <!-- Right Menu -->
-      <nav class="ea-right">
-        <ul>
-          <li><a href="/gallery">GALLERY</a></li>
-          <li><a href="contact.html">CONTACT</a></li>
-        </ul>
-      </nav>
+    <!-- Center Text Logo -->
+    <div class="ea-logo">
+      <a href="/" class="ea-wordmark" aria-label="Shruti Chadha">SHRUTI&nbsp;CHADHA</a>
     </div>
-  </header>
 
-  <style>
-    :root {
-      --gold: #c9b27d;
-      --border: #e5decf;
-      --bg: #fff;
-      --hover: #faf8f3;
-    }
+    <!-- Right Menu (Desktop only) -->
+    <nav class="ea-right">
+      <ul>
+        <li><a href="/gallery">GALLERY</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+    </nav>
+  </div>
 
-    .ea-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-    }
+  <!-- Mobile dropdown menu -->
+  <nav class="ea-mobile-menu">
+    <ul>
+      <li><a href="/">HOME</a></li>
+      <li><a href="#about-essajees">ABOUT</a></li>
+      <li><a href="/gallery">GALLERY</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
+    </ul>
+  </nav>
+</header>
 
+<style>
+  :root {
+    --gold: #c9b27d;
+    --border: #e5decf;
+    --bg: #fff;
+    --hover: #faf8f3;
+  }
+
+  /* ========= SHARED HEADER STYLES ========= */
+  .ea-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .ea-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 86px;
+    position: relative;
+  }
+
+  .ea-left,
+  .ea-right {
+    width: 520px;
+    max-width: 40%;
+  }
+
+  .ea-left ul,
+  .ea-right ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ea-left li,
+  .ea-right li {
+    border: 1px solid var(--border);
+    border-top: none;
+    border-bottom: none;
+    background: var(--bg);
+  }
+
+  .ea-left li + li,
+  .ea-right li + li {
+    border-left: none;
+  }
+
+  .ea-left a,
+  .ea-right a {
+    display: block;
+    padding: 28px 36px;
+    text-decoration: none;
+    color: var(--gold);
+    font-family: "Playfair Display", serif;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-align: center;
+    white-space: nowrap;
+    background: var(--bg);
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+
+  .ea-left a:hover,
+  .ea-right a:hover {
+    background: var(--hover);
+    box-shadow: inset 0 -3px 0 var(--gold);
+  }
+
+  .ea-logo {
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    padding: 0 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ea-wordmark {
+    font-family: "Playfair Display", serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-size: clamp(30px, 4vw, 48px);
+    letter-spacing: 0.06em;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.08));
+    transform: scaleX(0.78);
+    transform-origin: center;
+  }
+
+  /* ========= MOBILE ELEMENTS (hamburger + menu) ========= */
+
+  .ea-burger {
+    display: none; /* hidden on desktop */
+    flex-shrink: 0;
+    width: 38px;
+    height: 32px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 2px 7px;
+  }
+
+  .ea-burger span {
+    display: block;
+    width: 100%;
+    height: 1.7px;
+    background: var(--gold);
+    border-radius: 999px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .ea-burger.open span:first-child {
+    transform: translateY(3px) rotate(45deg);
+  }
+
+  .ea-burger.open span:last-child {
+    transform: translateY(-3px) rotate(-45deg);
+  }
+
+  .ea-mobile-menu {
+    display: none;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+  }
+
+  .ea-mobile-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 6px 16px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .ea-mobile-menu li a {
+    display: block;
+    padding: 9px 8px;
+    text-decoration: none;
+    color: var(--gold);
+    font-family: "Playfair Display", serif;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+  }
+
+  .ea-mobile-menu li a:hover {
+    background: var(--hover);
+    box-shadow: inset 0 -2px 0 var(--gold);
+  }
+
+  .ea-mobile-menu.open {
+    display: block;
+  }
+
+  /* ========= RESPONSIVE BEHAVIOUR ========= */
+
+  /* Tablet & down */
+  @media (max-width: 1024px) {
     .ea-nav {
+      justify-content: center;
+      gap: 12px;
+    }
+
+    /* Show burger, hide side menus */
+    .ea-burger {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 0;
-      height: 86px;
-      position: relative;
+      position: absolute;
+      left: 16px;
     }
 
     .ea-left,
     .ea-right {
-      width: 520px;
-    }
-
-    .ea-left ul,
-    .ea-right ul {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .ea-left li,
-    .ea-right li {
-      border: 1px solid var(--border);
-      border-top: none;
-      border-bottom: none;
-      background: var(--bg);
-    }
-
-    .ea-left li + li,
-    .ea-right li + li {
-      border-left: none;
-    }
-
-    .ea-left a,
-    .ea-right a {
-      display: block;
-      padding: 28px 36px;
-      text-decoration: none;
-      color: var(--gold);
-      font-family: "Playfair Display", serif;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      background: var(--bg);
-      text-align: center;
-      white-space: nowrap;
-      transition: background 0.3s, box-shadow 0.3s;
-    }
-
-    .ea-left a:hover,
-    .ea-right a:hover {
-      background: var(--hover);
-      box-shadow: inset 0 -3px 0 var(--gold);
+      display: none;
     }
 
     .ea-logo {
-      border-left: 1px solid var(--border);
-      border-right: 1px solid var(--border);
-      padding: 0 45px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
+      border: none;
+      padding: 0;
     }
 
     .ea-wordmark {
-      font-family: "Playfair Display", serif;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-size: clamp(30px, 4vw, 48px);
-      letter-spacing: 0.06em;
-      line-height: 1;
-      text-decoration: none;
-      white-space: nowrap;
-      filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.08));
-      transform: scaleX(0.78);
-      transform-origin: center;
+      transform: none;
+      filter: none;
+      font-size: clamp(22px, 6vw, 30px);
+    }
+  }
+
+  /* Extra small phones */
+  @media (max-width: 480px) {
+    .ea-nav {
+      padding-inline: 14px;
     }
 
-    @media (max-width: 1024px) {
-      .ea-nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        height: auto;
-        padding: 12px 0;
-      }
-
-      .ea-left,
-      .ea-right {
-        display: none;
-        width: auto;
-      }
-
-      .ea-logo {
-        border: none;
-        padding: 0;
-        position: static;
-      }
-
-      .ea-wordmark {
-        font-size: clamp(26px, 8vw, 44px);
-        transform: none;
-        filter: none;
-      }
+    .ea-wordmark {
+      font-size: clamp(20px, 6.5vw, 26px);
     }
-  </style>
+
+    .ea-mobile-menu ul {
+      padding-inline: 12px;
+    }
+
+    .ea-mobile-menu li a {
+      font-size: 11px;
+      padding-block: 8px;
+    }
+  }
+</style>
+
+
+ 
 
 
   <!-- ====================== HERO ====================== -->

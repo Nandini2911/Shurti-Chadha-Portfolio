@@ -168,6 +168,20 @@ document.getElementById('mailtoWork')?.addEventListener('click', () => {
       }
     });
   })();
+  // ========= Mobile menu toggle =========
+(function () {
+  const burger = document.querySelector('.ea-burger');
+  const mobileMenu = document.querySelector('.ea-mobile-menu');
+
+  if (!burger || !mobileMenu) return;
+
+  burger.addEventListener('click', () => {
+    const isOpen = burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open', isOpen);
+    burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+})();
+
 
 
 
