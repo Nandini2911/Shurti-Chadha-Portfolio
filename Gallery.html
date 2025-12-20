@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="assets/styles.css" />
+
+  <style>
+    body{
+      background:#605c5c;              /* BLACK page */
+      font-family:"Playfair Display", serif;
+      color:#fff;
+    }
+
+    .gallery-wrap{
+      max-width:1300px;
+      margin:0 auto;
+      padding:34px 18px 90px;
+    }
+
+    .gallery-title{
+      text-align:center;
+      font-size:clamp(24px,3vw,38px);
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+      color:#fff;                   /* WHITE text */
+    }
+
+    .gallery-sub{
+      text-align:center;
+      margin-top:8px;
+      font-size:13px;
+      letter-spacing:0.06em;
+      color:rgba(255,255,255,0.72);
+    }
+
+    .gallery-grid{
+      margin-top:44px;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:28px;
+    }
+
+    /* WHITE cards on BLACK background */
+    .g-card{
+      position:relative;
+      overflow:hidden;
+      border-radius:22px;
+      background:#fff;
+      border:1px solid rgba(255,255,255,0.10);
+      box-shadow:0 22px 70px rgba(0,0,0,0.55);
+      transition:transform .45s ease, box-shadow .45s ease;
+      transform: translateY(8px);
+    }
+
+    .g-card:hover{
+      transform: translateY(-5px);
+      box-shadow:0 28px 85px rgba(0,0,0,0.65);
+    }
+
+    .g-img{
+      width:100%;
+      aspect-ratio:16/9;
+      object-fit:cover;
+      display:block;
+      transition: transform .7s ease;
+    }
+
+    .g-card:hover .g-img{
+      transform: scale(1.06);
+    }
+
+    .g-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to bottom,
+        rgba(255,255,255,0),
+        rgba(0,0,0,0.12)
+      );
+      pointer-events:none;
+    }
+
+    /* ===== Smooth Slide-Up Reveal ===== */
+    .reveal{
+      opacity:0;
+      transform: translateY(22px);
+      transition: opacity .9s cubic-bezier(.22,1,.36,1),
+                  transform .9s cubic-bezier(.22,1,.36,1);
+      will-change: opacity, transform;
+    }
+    .reveal.in{
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    @media (max-width:1024px){
+      .gallery-grid{ grid-template-columns:repeat(2,1fr); }
+    }
+
+    @media (max-width:560px){
+      .gallery-grid{ grid-template-columns:1fr; gap:20px; }
+      .g-card{ border-radius:18px; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .reveal{ opacity:1; transform:none; transition:none; }
+      .g-card{ transition:none; }
+      .g-img{ transition:none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== GALLERY ===== -->
+  <main class="gallery-wrap">
+    <h1 class="gallery-title reveal">Gallery</h1>
+   
+
+    <section class="gallery-grid" aria-label="Gallery grid">
+
+      <div class="g-card reveal">
+        <img class="g-img" src="assets/gallery/g1.jpeg" alt="Interior project">
+        <div class="g-overlay"></div>
+      </div>
+
+      <div class="g-card reveal">
+        <img class="g-img" src="assets/gallery/g2.jpeg" alt="Luxury interior">
+        <div class="g-overlay"></div>
+      </div>
+
+      <div class="g-card reveal">
+        <img class="g-img" src="assets/gallery/g3.jpeg" alt="Living space">
+        <div class="g-overlay"></div>
+      </div>
+
+      <div class="g-card reveal">
+        <img class="g-img" src="assets/gallery/g4.jpeg" alt="Bedroom design">
+        <div class="g-overlay"></div>
+      </div>
+
+      <div class="g-card reveal">
+        <img class="g-img" src="assets/gallery/g5.jpeg" alt="Dining space">
+        <div class="g-overlay"></div>
+      </div>
+
+      <div class="g-card reveal">
+        <img class="g-img" src="assets/gallery/g6.jpeg" alt="Material detail">
+        <div class="g-overlay"></div>
+      </div>
+
+      <div class="g-card reveal">
+        <img class="g-img" src="assets/gallery/g7.jpeg" alt="Architectural detail">
+        <div class="g-overlay"></div>
+      </div>
+
+      <div class="g-card reveal">
+        <img class="g-img" src="assets/gallery/g9.jpeg" alt="Interior styling">
+        <div class="g-overlay"></div>
+      </div>
+
+      <div class="g-card reveal">
+        <img class="g-img" src="assets/gallery/g10.jpeg" alt="Design atmosphere">
+        <div class="g-overlay"></div>
+      </div>
+
+      <div class="g-card reveal">
+        <img class="g-img" src="assets/gallery/g1.jpeg" alt="Signature project">
+        <div class="g-overlay"></div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="text-center py-6 text-sm" style="color:rgba(255,255,255,0.6);">
+    © Shruti Chadha 2025. All Rights Reserved.
+  </footer>
+
+  <!-- Optional: keep your global script (menu toggle etc.) -->
+  <script src="assets/script.js"></script>
+
+  <!-- Slide-up reveal script (staggered) -->
+  <script>
+    (function () {
+      const items = Array.from(document.querySelectorAll(".reveal"));
+
+      // Stagger delay for a premium feel
+      items.forEach((el, i) => {
+        el.style.transitionDelay = (i * 70) + "ms";
+      });
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("in");
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      items.forEach(el => io.observe(el));
+    })();
+  </script>
+
+</body>
+</html>
