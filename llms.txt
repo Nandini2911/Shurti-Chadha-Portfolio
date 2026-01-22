@@ -1,0 +1,29 @@
+llms.txt
+
+
+# Shruti Chadha
+
+> Shruti Chadha is a Delhi-based luxury interior designer known for a poetic minimalist approach to residential and commercial interiors, blending natural materials, calm compositions, and timeless design principles.
+
+Shruti Chadha Studio focuses on bespoke interior design services for private residences and curated commercial spaces across Delhi NCR. The work emphasizes thoughtful space planning, material honesty, and emotionally resonant interiors rather than trend-driven design.
+
+This website presents selected projects, design philosophy, and visual portfolios intended to help understand the designer’s approach, experience, and creative direction.
+
+## Primary Pages
+
+- [Homepage](https://www.shrutichadha.com/): Overview of design philosophy, professional background, and creative direction.
+- [Gallery](https://www.shrutichadha.com/gallery.html): Curated portfolio of luxury residential and minimalist interior design projects.
+- [Contact](https://www.shrutichadha.com/contact.html): Professional contact and enquiry information.
+
+## Design Focus
+
+- Luxury residential interior design
+- Poetic minimalism
+- Nature-inspired interiors
+- Calm and timeless spatial design
+- Bespoke interior detailing
+
+## Optional
+
+- [Instagram](https://www.instagram.com/shrutichadha_/): Visual updates and ongoing work.
+- [LinkedIn](https://www.linkedin.com/in/shrutichadhaa/): Professional background and profile.
