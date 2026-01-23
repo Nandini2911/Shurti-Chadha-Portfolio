@@ -1,6 +1,560 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- SEO + Social Media Preview -->
+  <meta name="description" content="Shruti Chadha is a Delhi-based interior designer and creative entrepreneur, known for her poetic approach to design — one that marries minimalism with warmth, and precision with emotion.">
+
+  <!-- Open Graph Meta (for Google, Facebook, LinkedIn, etc.) -->
+  <meta property="og:title" content="Shruti Chadha — Interior Designer & Creative Entrepreneur">
+  <meta property="og:description" content="Discover the poetic minimalism of Shruti Chadha — spaces that breathe, tell stories, and reflect timeless calm.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.shrutichadha.com/">
+  <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0784/4898/4280/files/IMG_8538.jpg?v=1762865290">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card (for X/Twitter) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Shruti Chadha — Interior Designer & Creative Entrepreneur">
+  <meta name="twitter:description" content="Spaces that breathe — designed by Shruti Chadha.">
+  <meta name="twitter:image" content="https://cdn.shopify.com/s/files/1/0784/4898/4280/files/IMG_8538.jpg?v=1762865290">
+
+  <title>Shruti Chadha</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Brand Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+
+<body class="bg-neutral-950 text-white antialiased">
+  
+
+  
+<!-- ========= SHRUTI CHADHA HEADER (Desktop + Mobile) ========= -->
+<header class="ea-header">
+  <div class="ea-nav">
+    <!-- Mobile hamburger (left) -->
+    <button class="ea-burger" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Left Menu (Desktop only) -->
+    <nav class="ea-left">
+      <ul>
+        <li><a href="/">HOME</a></li>
+        <li><a href="#about-shruti">ABOUT</a></li>
+      </ul>
+    </nav>
+
+    <!-- Center Text Logo -->
+    <div class="ea-logo">
+      <a href="/" class="ea-wordmark" aria-label="Shruti Chadha">SHRUTI&nbsp;CHADHA</a>
+    </div>
+
+    <!-- Right Menu (Desktop only) -->
+    <nav class="ea-right">
+      <ul>
+        <li><a href="/gallery.html">GALLERY</a></li>
+        <li><a href="/contact.html">CONTACT</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Mobile dropdown menu -->
+  <nav class="ea-mobile-menu">
+    <ul>
+      <li><a href="/">HOME</a></li>
+      <li><a href="#about-shruti">ABOUT</a></li>
+      <li><a href="/gallery">GALLERY</a></li>
+      <li><a href="/contact.html">CONTACT</a></li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  :root {
+    --gold: #c9b27d;
+    --border: #e5decf;
+    --bg: #fff;
+    --hover: #faf8f3;
+  }
+
+  /* ========= SHARED HEADER STYLES ========= */
+  .ea-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .ea-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 86px;
+    position: relative;
+  }
+
+  .ea-left,
+  .ea-right {
+    width: 520px;
+    max-width: 40%;
+  }
+
+  .ea-left ul,
+  .ea-right ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ea-left li,
+  .ea-right li {
+    border: 1px solid var(--border);
+    border-top: none;
+    border-bottom: none;
+    background: var(--bg);
+  }
+
+  .ea-left li + li,
+  .ea-right li + li {
+    border-left: none;
+  }
+
+  .ea-left a,
+  .ea-right a {
+    display: block;
+    padding: 28px 36px;
+    text-decoration: none;
+    color: var(--gold);
+    font-family: "Playfair Display", serif;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-align: center;
+    white-space: nowrap;
+    background: var(--bg);
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+
+  .ea-left a:hover,
+  .ea-right a:hover {
+    background: var(--hover);
+    box-shadow: inset 0 -3px 0 var(--gold);
+  }
+
+  .ea-logo {
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    padding: 0 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ea-wordmark {
+    font-family: "Playfair Display", serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-size: clamp(30px, 4vw, 48px);
+    letter-spacing: 0.06em;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.08));
+    transform: scaleX(0.78);
+    transform-origin: center;
+  }
+
+  /* ========= MOBILE ELEMENTS (hamburger + menu) ========= */
+
+  .ea-burger {
+    display: none; /* hidden on desktop */
+    flex-shrink: 0;
+    width: 38px;
+    height: 32px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 2px 7px;
+  }
+
+  .ea-burger span {
+    display: block;
+    width: 100%;
+    height: 1.7px;
+    background: var(--gold);
+    border-radius: 999px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .ea-burger.open span:first-child {
+    transform: translateY(3px) rotate(45deg);
+  }
+
+  .ea-burger.open span:last-child {
+    transform: translateY(-3px) rotate(-45deg);
+  }
+
+  .ea-mobile-menu {
+    display: none;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+  }
+
+  .ea-mobile-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 6px 16px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .ea-mobile-menu li a {
+    display: block;
+    padding: 9px 8px;
+    text-decoration: none;
+    color: var(--gold);
+    font-family: "Playfair Display", serif;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+  }
+
+  .ea-mobile-menu li a:hover {
+    background: var(--hover);
+    box-shadow: inset 0 -2px 0 var(--gold);
+  }
+
+  .ea-mobile-menu.open {
+    display: block;
+  }
+
+  /* ========= RESPONSIVE BEHAVIOUR ========= */
+
+  /* Tablet & down */
+  @media (max-width: 1024px) {
+    .ea-nav {
+      justify-content: center;
+      gap: 12px;
+    }
+
+    /* Show burger, hide side menus */
+    .ea-burger {
+      display: flex;
+      position: absolute;
+      left: 16px;
+    }
+
+    .ea-left,
+    .ea-right {
+      display: none;
+    }
+
+    .ea-logo {
+      border: none;
+      padding: 0;
+    }
+
+    .ea-wordmark {
+      transform: none;
+      filter: none;
+      font-size: clamp(22px, 6vw, 30px);
+    }
+  }
+
+  /* Extra small phones */
+  @media (max-width: 480px) {
+    .ea-nav {
+      padding-inline: 14px;
+    }
+
+    .ea-wordmark {
+      font-size: clamp(20px, 6.5vw, 26px);
+    }
+
+    .ea-mobile-menu ul {
+      padding-inline: 12px;
+    }
+
+    .ea-mobile-menu li a {
+      font-size: 11px;
+      padding-block: 8px;
+    }
+  }
+</style>
+
+
+ 
+
+
+  <!-- ====================== HERO ====================== -->
+  <header class="relative w-full min-h-screen overflow-hidden">
+    <video
+      id="heroVideo"
+      class="absolute inset-0 w-full h-full object-cover"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+    >
+      <source src="https://cdn.shopify.com/videos/c/o/v/4ce3641019bc415593c29933aa303659.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="absolute inset-0 bg-black/30"></div>
+
+    <div class="relative z-10 flex min-h-screen items-center justify-center text-center px-6">
+      <div class="will-scale-in brand-type" id="heroCopy"></div>
+    </div>
+  </header>
+
+
+
+  <!-- ================== ABOUT SECTION ================== -->
+  <section id="about-shruti" class="bg-white text-neutral-900 py-16 md:py-24">
+    <div class="mx-auto max-w-[95rem] px-6 flex flex-col items-center text-center gap-12">
+      <div class="brand-type" data-pop>
+        <h2 class="text-[#c9b27d] text-4xl md:text-5xl leading-tight">SHRUTI CHADHA</h2>
+      </div>
+
+      <div class="brand-type max-w-7xl space-y-8" data-pop data-pop-delay="120">
+        <p class="text-base md:text-lg leading-relaxed">
+          Interior Designer |  Entrepreneur | Space Curator
+        </p>
+
+        <p class="text-base md:text-lg leading-relaxed text-justify">
+          Shruti Chadha is a Delhi-based interior designer and creative entrepreneur, known for her poetic approach to design — one that marries minimalism with warmth, precision with emotion, and structure with soul. As the founder and principal designer of her namesake studio, she has built a practice grounded in authenticity, material honesty, and a deep reverence for nature.<br><br>
+          Shruti believes that spaces should breathe — and that every room must tell its own story. Her design language is rooted in organic textures, balanced proportions, and timeless calm. Inspiration, for her, often begins outside the studio — in the flow of a stream, the patina of stone, or the quiet poetry of a distant city. A passionate traveller, Shruti draws from her journeys across the world — translating the colours, cultures, and moods she encounters into subtle details within her interiors. Each project, thus, becomes a reflection of both the world she’s seen and the world she wishes to create.<br><br>
+          At her studio, she leads every project hands-on, from the first sketch to the final touch — crafting spaces that feel deeply personal and effortlessly elegant. Her portfolio spans luxury residences, boutique commercial spaces, and curated design experiences that celebrate craftsmanship, calm, and character.
+          For Shruti, design is an act of storytelling — where emotion is as integral as proportion, and beauty is found not in excess, but in honesty. Her work has been described as “poetic minimalism” — spaces that carry a quiet rhythm, inviting light, life, and a sense of belonging into every corner.
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-10 pt-2">
+          <div class="border-t border-[#c9b27d]/50 pt-5" data-pop data-pop-delay="0">
+            <div class="text-[#c9b27d] text-4xl md:text-5xl leading-snug">10 years<br/>experience</div>
+            <div class="mt-2 text-neutral-700 text-base">Estd. in 2014</div>
+          </div>
+
+          <div class="border-t border-[#c9b27d]/50 pt-5" data-pop data-pop-delay="80">
+            <div class="text-[#c9b27d] text-4xl md:text-5xl leading-snug">150,000<br/>sqft</div>
+            <div class="mt-2 text-neutral-700 text-base">currently under construction</div>
+          </div>
+
+          <div class="border-t border-[#c9b27d]/50 pt-5" data-pop data-pop-delay="160">
+            <div class="text-[#c9b27d] text-4xl md:text-5xl leading-snug">25 team<br/>members</div>
+            <div class="mt-2 text-neutral-700 text-base">and growing</div>
+          </div>
+
+          <div class="border-t border-[#c9b27d]/50 pt-5" data-pop data-pop-delay="240">
+            <div class="text-[#c9b27d] text-4xl md:text-5xl leading-snug">100<br/>projects</div>
+            <div class="mt-2 text-neutral-700 text-base">completed successfully</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== SECTION SEPARATOR =============== -->
+  <section class="bg-white"><div class="border-t border-[#c9b27d]/70"></div></section>
+
+  <!-- =============== MIDDLE FEATURE (IMAGE TOP, CONTENT BELOW) =============== -->
+  <section id="middle-feature" class="bg-white text-neutral-900 py-16 md:py-24">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="relative w-full overflow-hidden rounded-[22px] shadow-lg border border-neutral-200" data-pop data-pop-delay="80">
+        <img
+          src="https://i.ibb.co/K14qptr/IMG-8538.jpg"
+          alt="Profile feature"
+          class="w-full h-[420px] md:h-[520px] object-cover object-[50%_30%] transition-all duration-700 ease-out" />
+        <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent"></div>
+      </div>
+
+      <p class="text-neutral-700 text-base md:text-lg leading-relaxed" data-pop data-pop-delay="200">
+        <br>
+        Her creative process is deeply intuitive — guided as much by feeling as by form. Each concept begins with emotion, often distilled into a single thought or word that becomes the essence of the space. From there, materials, palettes, and compositions emerge organically, building an environment that feels as if it has always belonged. Whether it’s the way sunlight falls across a wall, the texture of hand-poured concrete, or the warmth of aged brass — Shruti curates these details with an almost meditative precision. The result is design that feels lived-in yet elevated, grounded yet graceful.<br>
+<br>
+Beyond interiors, Shruti’s work extends into a larger creative vision — one that celebrates the art of living with intention. She often collaborates with artisans, photographers, and contemporary creators to explore new intersections between design, craft, and culture. Through her studio and her voice, she continues to champion slow design, mindful creation, and the enduring power of spaces that make people feel — not just impressed, but understood.
+    </div>
+  </section>
+
+  <!-- =============== SECTION SEPARATOR =============== -->
+  <section class="bg-white"><div class="border-t border-[#c9b27d]/70"></div></section>
+
+  <!-- ===== PRESS MARQUEE (WITH HEADING "MEDIA FEATURES") ===== -->
+  <section id="press-marquee" class="bg-white text-neutral-900">
+    <div class="mx-auto max-w-[95rem] px-6 py-16 md:py-20">
+
+      <!-- Heading -->
+      <div class="text-center brand-type mb-10" data-pop>
+        <h2 class="text-[#c9b27d] text-3xl md:text-4xl tracking-wide leading-tight">Media Features</h2>
+        <div class="mt-3 flex justify-center">
+          <span class="inline-block w-20 h-px bg-[#c9b27d]/70"></span>
+        </div>
+      </div>
+
+      <!-- Scrolling marquee -->
+      <div class="marquee" data-pop data-pop-delay="150">
+        <div class="marquee-track">
+          <!-- Logos -->
+          <a class="marquee-item" href="#"><img src="https://images.squarespace-cdn.com/content/v1/6667224025cf36142e87a84e/9e9443f7-7c20-4590-a020-9fb8ff426d2d/Architectural_Digest_icon.svg.png" alt="Architectural Digest"></a>
+          <a class="marquee-item" href="#"><img src="https://images.squarespace-cdn.com/content/v1/6667224025cf36142e87a84e/28b9fde8-5a9d-49a3-9008-d00edeaec875/Elle-Decor-logo+1.png" alt="ELLE Decor"></a>
+          <a class="marquee-item" href="#"><img src="https://images.squarespace-cdn.com/content/v1/6667224025cf36142e87a84e/825e95d9-2de2-4e57-979d-c312948d1608/better-interiors-logo-vector+1.png" alt="Better Interiors"></a>
+          <a class="marquee-item" href="#"><img src="https://images.squarespace-cdn.com/content/v1/6667224025cf36142e87a84e/b53c254e-34ba-44a7-a8c4-5e49f51c2cc2/HC+GOODHOMES+%281%29.png" alt="GoodHomes"></a>
+          <a class="marquee-item" href="#"><img src="https://images.squarespace-cdn.com/content/v1/6667224025cf36142e87a84e/caaa0308-e9ff-4b4f-9e42-c023acf12479/The-Architects-Diary-LOGO-1-1.png" alt="Architect’s Diary"></a>
+
+          <!-- Duplicate sets for seamless loop -->
+          <a class="marquee-item" href="#"><img src="https://images.squarespace-cdn.com/content/v1/6667224025cf36142e87a84e/9e9443f7-7c20-4590-a020-9fb8ff426d2d/Architectural_Digest_icon.svg.png" alt="Architectural Digest"></a>
+          <a class="marquee-item" href="#"><img src="https://images.squarespace-cdn.com/content/v1/6667224025cf36142e87a84e/28b9fde8-5a9d-49a3-9008-d00edeaec875/Elle-Decor-logo+1.png" alt="ELLE Decor"></a>
+          <a class="marquee-item" href="#"><img src="https://images.squarespace-cdn.com/content/v1/6667224025cf36142e87a84e/825e95d9-2de2-4e57-979d-c312948d1608/better-interiors-logo-vector+1.png" alt="Better Interiors"></a>
+          <a class="marquee-item" href="#"><img src="https://images.squarespace-cdn.com/content/v1/6667224025cf36142e87a84e/b53c254e-34ba-44a7-a8c4-5e49f51c2cc2/HC+GOODHOMES+%281%29.png" alt="GoodHomes"></a>
+          <a class="marquee-item" href="#"><img src="https://images.squarespace-cdn.com/content/v1/6667224025cf36142e87a84e/caaa0308-e9ff-4b4f-9e42-c023acf12479/The-Architects-Diary-LOGO-1-1.png" alt="Architect’s Diary"></a>
+
+          <a class="marquee-item" href="#"><img src="https://images.squarespace-cdn.com/content/v1/6667224025cf36142e87a84e/9e9443f7-7c20-4590-a020-9fb8ff426d2d/Architectural_Digest_icon.svg.png" alt="Architectural Digest"></a>
+          <a class="marquee-item" href="#"><img src="https://images.squarespace-cdn.com/content/v1/6667224025cf36142e87a84e/28b9fde8-5a9d-49a3-9008-d00edeaec875/Elle-Decor-logo+1.png" alt="ELLE Decor"></a>
+          <a class="marquee-item" href="#"><img src="https://images.squarespace-cdn.com/content/v1/6667224025cf36142e87a84e/825e95d9-2de2-4e57-979d-c312948d1608/better-interiors-logo-vector+1.png" alt="Better Interiors"></a>
+          <a class="marquee-item" href="#"><img src="https://images.squarespace-cdn.com/content/v1/6667224025cf36142e87a84e/b53c254e-34ba-44a7-a8c4-5e49f51c2cc2/HC+GOODHOMES+%281%29.png" alt="GoodHomes"></a>
+          <a class="marquee-item" href="#"><img src="https://images.squarespace-cdn.com/content/v1/6667224025cf36142e87a84e/caaa0308-e9ff-4b4f-9e42-c023acf12479/The-Architects-Diary-LOGO-1-1.png" alt="Architect’s Diary"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HAVE A QUESTION CTA ===== -->
+  <section id="have-a-question" class="bg-white text-neutral-900">
+    <div class="mx-auto max-w-[95rem] px-6 py-16 md:py-5 space-y-10">
+      <div class="border-t border-[#c9b27d]/70"></div>
+
+      <div class="grid md:grid-cols-[1.5fr_1fr] items-start gap-10 md:gap-0 relative">
+        <div class="brand-type pr-10 md:pr-16" data-pop>
+          <h2 class="text-[#c9b27d] leading-tight text-3xl sm:text-3xl md:text-3xl">
+            Have a question for us?<br/>Let’s talk.
+          </h2>
+
+          <div class="mt-8 space-y-3 text-neutral-800">
+            <p class="text-base md:text-lg">
+              For all project inquiries, please email
+              <a href="mailto:work@shrutichadha.com"
+                 class="underline decoration-[#c9b27d]/40 underline-offset-4 hover:decoration-[#c9b27d]">
+              work@shrutichadha.com
+              </a>
+              with the subject <span class="font-medium">NEW PROJECT</span>.
+            </p>
+            <p class="text-base md:text-lg">
+              For all job inquiries, please write to
+              <a href="mailto:contact@shrutichadha.com"
+                 class="underline decoration-[#c9b27d]/40 underline-offset-4 hover:decoration-[#c9b27d]">
+                contact@shrutichadha.com
+              </a>
+            </p>
+          </div>
+        </div>
+
+       
+        </div>
+      </div>
+
+      <div class="border-t border-[#c9b27d]/70"></div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="site-footer" class="bg-white text-neutral-900">
+    <div class="mx-auto max-w-[95rem] px-6 pt-0 pb-6">
+      <div class="grid md:grid-cols-[1.6fr_1px_1fr] gap-10 md:gap-16 items-center">
+        <div class="flex flex-col items-center justify-center text-center space-y-6" data-pop>
+          <address class="not-italic text-neutral-700 leading-8">
+            Address: 10/1, Block No.2,W.H.S, Kirti Nagar Industrial Area, Kirti Nagar, New Delhi, Delhi 110015
+          </address>
+
+          <div class="flex justify-center items-center gap-6">
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/shrutichadha_?igsh=a2dka2hmcHprMzAw" target="_blank" aria-label="Instagram"
+               class="text-[#c9b27d] hover:opacity-80 transition">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.8" class="w-6 h-6">
+                <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <circle cx="17.5" cy="6.5" r="0.9" fill="currentColor"></circle>
+              </svg>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="#" target="_blank" aria-label="LinkedIn"
+               class="text-[#c9b27d] hover:opacity-80 transition">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.8" class="w-6 h-6">
+                <rect x="2" y="2" width="20" height="20" rx="3"></rect>
+                <line x1="7" y1="10" x2="7" y2="17"></line>
+                <circle cx="7" cy="7" r="1"></circle>
+                <path d="M11 17v-4a3 3 0 0 1 6 0v4"></path>
+              </svg>
+            </a>
+
+            <!-- Email -->
+<a href="mailto:work@shrutichadha.com?subject=New%20Project%20Inquiry&body=Hi%20Shruti,"
+   aria-label="Email"
+   class="text-[#c9b27d] hover:opacity-80 transition">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="1.8" class="w-6 h-6">
+    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+    <path d="m22 6-10 7L2 6"></path>
+  </svg>
+</a>
+</div>
+        </div>
+
+            
+
+        <div class="hidden md:block h-full w-px bg-[#c9b27d]/60 translate-x-20"></div>
+
+        <div class="brand-type md:pl-20 text-center md:text-left" data-pop data-pop-delay="100">
+          <h3 class="text-neutral-900 text-2xl">Pages</h3>
+          <ul class="mt-6 space-y-4 text-neutral-700">
+            <li><a href="/" class="hover:text-neutral-900 transition">HOME</a></li>
+            <li><a href="#about-essajees" class="hover:text-neutral-900 transition">ABOUT</a></li>
+            <li><a href="gallery.html" class="hover:text-neutral-900 transition">GALLERY</a></li>
+            <li><a href="/contact.html" class="hover:text-neutral-900 transition">CONTACT</a></li>
+            
+
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-1 border-t border-[#c9b27d]/40"></div>
+      <div class="py-6 flex flex-col md:flex-row items-center justify-center text-sm text-neutral-600 gap-3">
+        <p>© Shruti Chadha 2025. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- External JS -->
+  <script src="assets/script.js"></script>
+</body>
+</html>
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- SEO + Social Media Preview -->
